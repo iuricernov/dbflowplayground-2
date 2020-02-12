@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_someone.view.*
 
 class ListAdapter(
-    private val items: List<ListAdapterItem>
+    private val items: List<ListAdapterItem>,
+    private val listener: (ListAdapterItem) -> Unit
 ) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,9 +25,10 @@ class ListAdapter(
         return items.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: ListAdapterItem) {
             itemView.item_someone_text_view.text = item.nameToShow
+            itemView.item_someone_holder.setOnClickListener { listener(item) }
         }
     }
 }

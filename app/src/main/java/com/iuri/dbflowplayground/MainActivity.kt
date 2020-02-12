@@ -2,6 +2,7 @@ package com.iuri.dbflowplayground
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
                 ListAdapterItem("Other teacher"),
                 ListAdapterItem("Other teacher")
             )
-        )
+        ) {
+            Toast.makeText(this, "Selected ${it.nameToShow}", Toast.LENGTH_LONG).show()
+        }
     }
 }
