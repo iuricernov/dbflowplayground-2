@@ -3,6 +3,7 @@ package com.iuri.dbflowplayground
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.iuri.dbflowplayground.database.model.SomeoneModel
 import kotlinx.android.synthetic.main.activity_add_someone.*
 
 class AddSomeoneActivity : AppCompatActivity() {
@@ -31,7 +32,13 @@ class AddSomeoneActivity : AppCompatActivity() {
             return
         }
 
-        // TODO save it
+        val model = SomeoneModel(
+            0,
+            name_edit_text.text!!.toString(),
+            surname_edit_text.text!!.toString(),
+            male_radio_button.isChecked)
+
+        model.save()
 
         setResult(RESULT_OK)
         finish()
